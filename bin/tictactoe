@@ -1,3 +1,22 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+puts "Tic Tac Toe"
+
+game = Game.new
+
+until game.won?
+  game.play 
+end
+
+agian = ""
+until agian.downcase == "n" || agian.downcase == "no"
+  puts "Would you like to play again?"
+  agian = gets.strip
+  agian.downcase == "y" || agian.downcase == "yes"
+  game = Game.new
+  until game.won?
+    game.play
+  end
+end
